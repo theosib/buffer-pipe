@@ -83,7 +83,7 @@ void add_bytes(int n)
     count += n;
 }
 
-int main()
+int main(int argc, char *argv[])
 {
     int n, m;
     int drain = 0;
@@ -93,8 +93,12 @@ int main()
     pfds = calloc(2, sizeof(struct pollfd));
     
     // Allocate memory for data buffer
-    buffer = malloc(SIZE);
-    size = SIZE;
+    if (argc>1) {
+        size = atoi(argv[1]);
+    } else {
+        size = SIZE;
+    }
+    buffer = malloc(size);
     
     // Set up poll structures
     pfds[STDIN_FILENO].fd = STDIN_FILENO;
