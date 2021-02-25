@@ -38,6 +38,7 @@ int dequeue_size()
     }
 }
 
+// How many contiguous bytes can we add to the queue?
 int enqueue_size()
 {
     if (tail == head) { // Full or empty
