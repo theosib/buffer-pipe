@@ -120,7 +120,7 @@ int main(int argc, char *argv[])
             // Otherwise don't poll stdout
             pfds[STDOUT_FILENO].fd = -1;
         }
-        if (enqueue_size() > 0) {
+        if (enqueue_size() > 0 && !drain) {
             // If we have free space in queue, poll stdin
             pfds[STDIN_FILENO].fd = STDIN_FILENO;
         } else {
